@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><title>Life cat</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
 <style>
 :root{--bg:#f6f6f4;--card:#fff;--tx:#111;--mu:#8a8a8a;--pr:#111;--ok:#2b2b2b;--ng:#555;--bd:#e4e4e0;--pt:#fff;--sb:#111;--st:#a8a8a8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0a0a0a;--card:#141414;--tx:#eee;--mu:#888;--bd:#262626;--pr:#eee;--ok:#ccc;--ng:#aaa;--pt:#111;--sb:#000;--st:#8a8a8a}}
-*{box-sizing:border-box}html,body{height:100%;margin:0}
+*{box-sizing:border-box}html,body{height:100%;margin:0;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}img,svg,canvas,video{max-width:100%}main,.card,.row>*{min-width:0}.row>div{overflow-wrap:anywhere}
 body{background:var(--bg);color:var(--tx);font:15px/1.7 "Helvetica Neue",Helvetica,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased}
 button,input,select{font:inherit}a[onclick^="rep("]{display:none}select{width:100%;padding:12px 14px;margin:6px 0 14px;border:1px solid var(--bd);border-radius:4px;background:var(--card);color:var(--tx);outline:0}
 input{width:100%;padding:12px 14px;margin:6px 0 14px;border:1px solid var(--bd);border-radius:4px;background:var(--card);color:var(--tx);outline:0;transition:border-color .15s}
@@ -23,12 +23,23 @@ nav a{padding:11px 14px;border-radius:4px;cursor:pointer;color:var(--st);font-si
 nav a:hover{color:#fff}nav a.on{background:rgba(255,255,255,.12);color:#fff}
 main{flex:1;overflow:auto;padding:44px 52px;max-width:940px}
 .bal{font-size:58px;font-weight:200;letter-spacing:-.03em;line-height:1.1;color:var(--tx)}
-.mu{color:var(--mu);font-size:13px}.pt{font-size:26px;font-weight:300;letter-spacing:.14em;margin:0 0 26px}main>*{animation:up .35s both}@keyframes up{from{opacity:0;transform:translateY(8px)}}.row:hover{background:rgba(127,127,127,.06)}.card{transition:border-color .2s}.card:hover{border-color:var(--mu)}.qa{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.mu{color:var(--mu);font-size:13px}.pt{font-size:26px;font-weight:300;letter-spacing:.14em;margin:0 0 26px}main>*{animation:up .35s both}@keyframes up{from{opacity:0;transform:translateY(8px)}}.row:hover{background:rgba(127,127,127,.06)}.card{transition:border-color .2s}.card:hover{border-color:var(--mu)}.qa{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}:root[data-theme=dark]{--bg:#0a0a0a;--card:#141414;--tx:#eee;--mu:#888;--bd:#262626;--pr:#eee;--ok:#ccc;--ng:#aaa;--pt:#111;--sb:#000;--st:#8a8a8a}
 .row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--bd)}.row:last-child{border-bottom:0}
 .plus,.minus{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}.plus::before{content:""}.minus{color:var(--mu)}
 .dot{background:#fff;color:#111;border-radius:99px;padding:0 7px;font-size:11px;margin-left:8px;font-weight:700}
 #msg{position:fixed;top:calc(18px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);padding:13px 26px;border-radius:4px;color:var(--pt);z-index:30;display:none;font-size:14px;letter-spacing:.04em;box-shadow:0 8px 30px rgba(0,0,0,.25)}
-@media(max-width:700px){#app{flex-direction:column-reverse}nav{width:100%;flex-direction:row;padding:8px;gap:0;overflow-x:auto}nav b{display:none}nav a{font-size:12px;padding:11px 13px;text-align:center;flex:0 0 auto;white-space:nowrap}main{padding:22px 16px}.bal{font-size:44px}.card{padding:20px}}
+#top,#ov{display:none}
+@media(max-width:700px){#app{flex-direction:column}
+#top{display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--sb);color:#fff;flex:0 0 auto}
+#top button{background:none;border:0;padding:6px;cursor:pointer;display:flex;flex-direction:column;gap:5px}
+#top button i{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+#top span{font-size:17px;letter-spacing:.2em;font-weight:300}
+nav{position:fixed;top:0;left:0;bottom:0;width:80%;max-width:300px;z-index:40;transform:translateX(-102%);transition:transform .25s;padding-top:calc(34px + env(safe-area-inset-top,0px));box-shadow:0 0 40px rgba(0,0,0,.4)}
+body.nv nav{transform:none}body.nv #ov{display:block}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:35}
+nav a{padding:14px;font-size:15px}
+main{padding:20px 16px 40px;max-width:100%}.pt{font-size:22px;margin-bottom:18px}.bal{font-size:40px}.card{padding:18px}
+input,select{font-size:16px}.btn{padding:12px 16px}.row{flex-wrap:wrap}#auth{padding-top:8vh}}
 </style></head><body>
 <div id="msg"></div><div id="root">読み込み中…</div>
 <script>
@@ -42,13 +53,22 @@ const st=(k,v)=>{try{v===undefined?(localStorage.removeItem(k),sessionStorage.re
 const ld=k=>{try{return JSON.parse(localStorage.getItem(k)||sessionStorage.getItem(k))}catch(e){return null}};
 const U=id=>db.collection("users").doc(id),all=async c=>(await db.collection(c).get()).docs.map(d=>({id:d.id,...d.data()}));
 async function users(){return all("users")}
-async function note(uid,text,to){await db.collection("notes").add({uid,text,to,read:0,t:Date.now()})}
+const NK={send:"req",log:"pay",loan:"loan",dm:"dm",event:"event",home:"news",ask:"reply",note:"reply",set:"sec"};
+async function note(uid,text,to){try{const p=((await U(uid).get()).data()||{}).pf||{},k=NK[to]||"news";if(k!="sec"&&p.nt&&p.nt[k]===0)return}catch(e){}await db.collection("notes").add({uid,text,to,read:0,t:Date.now()})}
+const firebaseConfig={apiKey:"AIzaSyDsTlKap7GMyDHN5KcuYdudpF-rtNcsVTU",authDomain:"lifecat-61f81.firebaseapp.com",databaseURL:"https://lifecat-61f81-default-rtdb.firebaseio.com",projectId:"lifecat-61f81",storageBucket:"lifecat-61f81.firebasestorage.app",messagingSenderId:"542285066222",appId:"1:542285066222:web:f9211aba8a495951d268ff",measurementId:"G-E1P11B1RFZ"};
+function fbDb(){const B=firebaseConfig.databaseURL,K=s=>encodeURIComponent(encodeURIComponent(s).replace(/\./g,"%2E")),Q=async(m,p,b)=>{let r;try{r=await fetch(B+"/"+p+".json",{method:m,headers:{"Content-Type":"application/json"},body:b===undefined?undefined:JSON.stringify(b)})}catch(e){throw new Error("データベースに接続できません(ネットワーク)")}if(!r.ok)throw new Error("データベースに接続できません("+r.status+")。Realtime Databaseのルールを確認してください。");return r.json()};
+ const doc=(c,id)=>({id,get:async()=>{const d=await Q("GET",c+"/"+K(id));return{id,data:()=>d==null?undefined:d}},set:d=>Q("PUT",c+"/"+K(id),d).then(()=>{}),update:d=>Q("PATCH",c+"/"+K(id),d).then(()=>{}),delete:()=>Q("DELETE",c+"/"+K(id)).then(()=>{})});
+ return{collection:c=>({doc:id=>doc(c,id),add:async d=>{const r=await Q("POST",c,d);return doc(c,decodeURIComponent(r.name))},get:async()=>{const m=await Q("GET",c)||{};return{docs:Object.entries(m).map(([k,v])=>({id:decodeURIComponent(k),data:()=>v}))}}})}}
 function localDb(){let D;try{D=JSON.parse(localStorage.getItem("lcdb")||"{}")}catch(e){D={}}const cp=o=>JSON.parse(JSON.stringify(o)),save=()=>{try{localStorage.setItem("lcdb",JSON.stringify(D))}catch(e){}};
  const doc=(c,id)=>({id,get:async()=>({id,data:()=>D[c]&&D[c][id]?cp(D[c][id]):undefined}),set:async d=>{(D[c]=D[c]||{})[id]=cp(d);save()},update:async d=>{Object.assign(D[c][id],d);save()},delete:async()=>{if(D[c])delete D[c][id];save()}});
  return{collection:c=>({doc:id=>doc(c,id),add:async d=>{const id="d"+Date.now().toString(36)+Math.random().toString(36).slice(2,7);(D[c]=D[c]||{})[id]=cp(d);save();return doc(c,id)},get:async()=>({docs:Object.entries(D[c]||{}).map(([id,d])=>({id,data:()=>cp(d)}))})})}}
-async function init(){
+function fail(e){const m=String((e&&e.message)||e||"不明なエラー"),r=$("#root");if(r&&r.textContent.trim()=="読み込み中…"){r.innerHTML=`<div id="auth"><h1>Life cat</h1><div class="card" style="text-align:left"><p>読み込めませんでした。</p><p class=mu>${esc(m)}</p><button class="btn big" onclick="location.reload()">再読み込み</button><button class="btn big s" onclick="askPerm()">権限を確認する</button></div></div>`}else say("エラー: "+m,0)}
+const askPerm=async()=>{try{const p=await claude.use("permissions");await p.request();location.reload()}catch(e){say("権限の画面を開けませんでした",0)}};
+window.addEventListener("unhandledrejection",e=>fail(e.reason));
+async function init(){let t;try{await Promise.race([init0(),new Promise((_,r)=>{t=setTimeout(()=>r(new Error("接続に時間がかかっています。再読み込みしてください。")),15000)})])}catch(e){fail(e)}finally{clearTimeout(t)}}
+async function init0(){
  db=null;try{db=typeof claude!="undefined"?await claude.use("db"):null}catch(e){}
- if(!db)db=localDb();
+ if(!db){if(typeof claude!="undefined")throw new Error("データに接続できませんでした。claude.aiにログインして、このページを開き直してください。");db=firebaseConfig.databaseURL?fbDb():localDb()}
  const s=ld("sess");
  if(s&&Date.now()<s.exp){const d=await U(s.uid).get(),u=d.data();
   if(u&&!u.banned&&u.hash===s.h){me={id:s.uid,...u};s.exp=Date.now()+5184e6;st("sess",s);return app()}}
@@ -66,10 +86,10 @@ async function signup(){const n=$("#n").value.trim(),p=$("#p").value;
  const h=await sha(k+":"+p);await U("n_"+k).set({nick:n,k,hash:h,bal:0,created:Date.now(),banned:0});st("sess",{uid:"n_"+k,h,exp:Date.now()+5184e6,keep:true});me={id:"n_"+k,nick:n,k,hash:h,bal:0,created:Date.now(),banned:0};say("入会できました!");app()}
 async function login(){const n=$("#n").value,p=$("#p").value,k=key(n),d=await U("n_"+k).get(),u=d.data(),h=await sha(k+":"+p);
  if(!u||u.hash!==h)return say("ニックネームかパスワードが違います",0);if(u.banned)return say("このアカウントは停止されています",0);
- st("sess",{uid:"n_"+k,h,exp:Date.now()+5184e6,keep:true});me={id:"n_"+k,...u};app()}
-function logout(){st("sess");me=null;admin=0;clearInterval(timer);authView();showForm("in")}
-async function app(){$("#root").innerHTML=`<div id="app"><nav id="nav"></nav><main id="main"></main></div>`;go("home");dueCheck();clearInterval(timer);timer=setInterval(()=>{if(!["send","set","code","dm","ask","loan"].includes(page))go(page,1)},15000)}
-async function go(p,quiet){page=p;const d=await U(me.id).get();if(!d.data())return logout();me={id:me.id,...d.data()};
+ st("sess",{uid:"n_"+k,h,exp:Date.now()+5184e6,keep:true});me={id:"n_"+k,...u};try{await db.collection("logins").add({uid:me.id,t:Date.now(),ua:navigator.userAgent.slice(0,90)})}catch(e){}app()}
+function logout(){st("sess");me=null;admin=0;document.body.classList.remove("nv");document.documentElement.removeAttribute("data-theme");document.documentElement.style.cssText="";clearInterval(timer);authView();showForm("in")}
+async function app(){$("#root").innerHTML=`<div id="app"><div id="top"><button onclick="document.body.classList.toggle('nv')" aria-label="メニュー"><i></i><i></i><i></i></button><span>Life cat</span></div><div id="ov" onclick="document.body.classList.remove('nv')"></div><nav id="nav"></nav><main id="main"></main></div>`;go("home");dueCheck();clearInterval(timer);timer=setInterval(()=>{if(!["send","set","code","dm","ask","loan"].includes(page))go(page,1)},15000)}
+async function go(p,quiet){page=p;if(!quiet)document.body.classList.remove("nv");const d=await U(me.id).get();if(!d.data())return logout();me={id:me.id,...d.data()};applyPf();
  if(me.banned)return logout();const ns=(await all("notes")).filter(n=>n.uid==me.id),un=ns.filter(n=>!n.read).length;
  const M=[["home","","マイページ"],["send","","送金・請求"],["loan","","借金・返済"],["log","","通帳"],["dm","","DM"],["note","","通知"+(un?`<span class=dot>${un}</span>`:"")],["event","","イベント"],["ask","","お問い合わせ・通報"],["set","","設定"],["code","","コード"]];
  $("#nav").innerHTML="<b><img src='"+LOGO+"' alt='' style='width:34px;height:34px;border-radius:8px'>Life cat</b>"+M.map(m=>`<a class="${m[0]==p?"on":""} ${m[0]=="set"||m[0]=="code"?"x":""}" onclick="go('${m[0]}')">${m[1]} ${m[2]}</a>`).join("")+`<a onclick="logout()" class=x>ログアウト</a>`;
@@ -82,7 +102,7 @@ async home(ns){const dbt=(await all("loan")).filter(l=>l.borrower==me.id&&l.st==
  <div class="qa"><button class="btn" onclick="go('send')">送金・請求</button><button class="btn s" onclick="go('loan')">借金・返済</button><button class="btn s" onclick="go('dm')">DM</button></div>${spark(t)}<div class="card"><b>最近の取引</b>${txRows(t.slice(0,5))}</div>
  <div class="card"><b>未読通知</b>${ns.filter(n=>!n.read).slice(0,3).map(n=>`<div class=row>${esc(n.text)}</div>`).join("")||'<p class="mu">ありません</p>'}</div>`},
 async send(){const rq=(await all("req")).filter(r=>r.to==me.id&&r.st=="wait");
- return`<div class="card"><b>送金する / 請求する</b><label>相手を選ぶ</label>${await pickU("to")}<label>金額(円)</label><input id="amt" type="number" min="1" inputmode="numeric"><label>理由</label><input id="why" maxlength="40"><label style="display:block;margin:0 0 12px"><input type="checkbox" id="rl" style="width:auto;margin:0 8px 0 0">請求を借金にする(あとで返済する)</label><label>返済予定日(借金の場合)</label><input id="rd" type="date">
+ return`<div class="card"><b>送金する / 請求する</b><label>相手を選ぶ</label>${await pickU("to")}<label>金額(円)</label><input id="amt" type="number" min="1" inputmode="numeric"><label>理由</label><input id="why" maxlength="40"><label>返済予定日(任意・請求用)</label><input id="rd" type="date"><p class="mu" style="margin:0 0 14px">請求に相手が同意すると、返済が必要な借金になります。</p>
  <button class="btn" onclick="sendMoney()">送金</button> <button class="btn g" onclick="makeReq()">請求</button></div>
  <div class="card"><b>届いている請求</b>${rq.length?rq.map(rqRow).join(""):'<p class="mu">ありません</p>'}</div>`},
 async log(){return`<div class="card"><b>通帳</b>${txRows(await mytx())}</div>`},
@@ -101,16 +121,16 @@ async function pay(from,to,amt,why,rid,sig,rsig){const a=await U(from.id).get(),
 function chkIn(u,a){if(!u)throw"そのニックネームの人はいません";if(u.id==me.id)throw"自分には使えません";if(u.banned)throw"その人は利用できません";if(!Number.isInteger(a)||a<1||a>1e7)throw"金額は1円以上の整数にしてね"}
 let busy=0;
 async function sendMoney(){if(busy)return;busy=1;try{const a=+$("#amt").value,u=await find($("#to").value);chkIn(u,a);
- const sg=await sign(`${u.nick}さんへ ${yen(a)} を支払います`);if(!sg)return;await pay(me,u,a,$("#why").value,"",sg);await note(u.id,`${me.nick}さんから ${yen(a)} 届きました`,"log");say("送金しました!");go("send")}catch(e){say(String(e),0)}finally{busy=0}}
+ if(PF().cf!==0&&!confirm(`【送金の確認】\n相手:${u.nick}\n金額:${yen(a)}\n理由:${$("#why").value||"なし"}\n\nこの内容でよろしいですか?`))return;const sg=await sign(`${u.nick}さんへ ${yen(a)} を支払います`);if(!sg)return;await pay(me,u,a,$("#why").value,"",sg);await note(u.id,`${me.nick}さんから ${yen(a)} 届きました`,"log");say("送金しました!");go("send")}catch(e){say(String(e),0)}finally{busy=0}}
 async function makeReq(){if(busy)return;busy=1;try{const a=+$("#amt").value,u=await find($("#to").value);chkIn(u,a);
- const sg=await sign(`${u.nick}さんへ ${yen(a)} を${$("#rl").checked?"借金として":""}請求します`);if(!sg)return;await db.collection("req").add({sig:sg,loan:$("#rl").checked?1:0,due:$("#rd").value?new Date($("#rd").value).getTime():0,from:me.id,fromN:me.nick,to:u.id,toN:u.nick,amt:a,why:$("#why").value,st:"wait",t:Date.now()});await note(u.id,`${me.nick}さんから ${yen(a)} の請求が届きました`,"send");say("請求を送りました")}catch(e){say(String(e),0)}finally{busy=0}}
+ const sg=await sign(`${u.nick}さんへ ${yen(a)} を借金として請求します`);if(!sg)return;await db.collection("req").add({sig:sg,loan:1,due:$("#rd").value?new Date($("#rd").value).getTime():0,from:me.id,fromN:me.nick,to:u.id,toN:u.nick,amt:a,why:$("#why").value,st:"wait",t:Date.now()});await note(u.id,`${me.nick}さんから ${yen(a)} の請求が届きました`,"send");say("請求を送りました")}catch(e){say(String(e),0)}finally{busy=0}}
 async function ans(id,ok){if(busy)return;busy=1;try{const ref=db.collection("req").doc(id),r=(await ref.get()).data();
  if(!r||r.st!="wait"||r.to!=me.id)throw"この請求は処理済みです";
  if(ok){const sg=await sign(`${r.fromN}さんへ ${yen(r.amt)} を支払います`);if(!sg)return;await ref.update({st:"done"});try{await pay(me,{id:r.from,nick:r.fromN},r.amt,(r.loan?"借金 ":"")+(r.why||""),id,sg,r.sig)}catch(e){await ref.update({st:"wait"});throw e}
   if(r.loan)await db.collection("loan").add({lender:me.id,lenderN:me.nick,borrower:r.from,borrowerN:r.fromN,amt:r.amt,paid:0,due:r.due||0,why:r.why||"",st:"on",t:Date.now()});await note(r.from,`${me.nick}さんが ${yen(r.amt)} の請求に同意しました`,"log");say("支払いました")}
  else{await ref.update({st:"no"});await note(r.from,`${me.nick}さんが請求を拒否しました`,"home");say("拒否しました")}go(page)}catch(e){say(String(e),0)}finally{busy=0}}
 async function chpw(){const o=await sha(me.k+":"+$("#op").value),n=$("#np").value;if(o!==me.hash)return say("今のパスワードが違います",0);if(n.length<6)return say("6文字以上で入力してください",0);
- const h=await sha(me.k+":"+n);await U(me.id).update({hash:h});const s=ld("sess");s.h=h;st("sess",s);say("変更しました")}
+ const h=await sha(me.k+":"+n);await U(me.id).update({hash:h});const s=ld("sess");s.h=h;st("sess",s);await note(me.id,"パスワードが変更されました","set");say("変更しました")}
 async function chk(){if(await sha($("#cd").value)!==CODE_HASH)return say("コードが違います",0);admin=Date.now()+18e5;say("管理者ページを開きます");go("code")}
 async function adminView0(){const us=(await users()).sort((a,b)=>a.created-b.created);
  return`<div class="card"><b>🛠 管理者ページ</b><span class=mu>(30分で自動的に閉じます)</span></div>
@@ -195,5 +215,51 @@ async function adminView(){const O=(await all("ops")).sort((a,b)=>b.t-a.t).slice
  return await adminView1()+`<div class="card"><b>ボーナス・利息</b>${await pickU("bn")}<input id="ba" type="number" placeholder="ボーナス金額"><input id="bw" placeholder="理由(例: テスト満点)"><button class="btn" onclick="bonus()">ボーナスを付与</button><hr style="border:0;border-top:1px solid var(--bd);margin:20px 0"><input id="ir" type="number" step="0.1" placeholder="月利(%)"><button class="btn s" onclick="interest()">全員に今月の利息を付与</button><p class="mu">同じ相手・同じ理由・同じ日のボーナスと、同じ月の利息は、二重に付与されません。</p></div><div class="card"><b>操作履歴</b>${O.map(o=>`<div class=row><span>${esc(o.text)}</span><span class=mu>${fmt(o.t)}</span></div>`).join("")||'<p class="mu">まだありません</p>'}</div>`}
 const bonus=()=>run(async()=>{ag();const u=await find($("#bn").value),a=+$("#ba").value,w=$("#bw").value.trim();if(!u)throw"相手を選んでください";if(!Number.isInteger(a)||a<1||a>1e6)throw"金額が正しくありません";if(!w)throw"理由を入力してください";if(!await grant(u,a,w,`${u.id}|${w}|${new Date().toISOString().slice(0,10)}`))throw"同じボーナスはすでに付与済みです";say("付与しました");go("code")});
 const interest=()=>run(async()=>{ag();const r=+$("#ir").value;if(!(r>0&&r<=10))throw"月利は0より大きく10以下で入力してください";const ym=new Date().toISOString().slice(0,7);if(!confirm(`全員に月利${r}%の利息を付与しますか?`))return;let n=0;for(const u of await users()){if(u.banned||u.bal<1)continue;const a=Math.floor(u.bal*r/100);if(a>0&&await grant(u,a,`${ym}の利息`,`int|${ym}|${u.id}`))n++}say(n?`${n}人に付与しました`:"今月の利息はすでに付与済みです");go("code")});
+const PF=()=>(me&&me.pf)||{};
+async function savePf(p){me.pf={...PF(),...p};await U(me.id).update({pf:me.pf});applyPf()}
+function applyPf(){const p=PF(),r=document.documentElement,C={blue:"#2563eb",green:"#16a34a",purple:"#7c3aed",red:"#dc2626"};p.mode=="light"||p.mode=="dark"?r.setAttribute("data-theme",p.mode):r.removeAttribute("data-theme");if(C[p.color]){r.style.setProperty("--pr",C[p.color]);r.style.setProperty("--pt","#fff")}else{r.style.removeProperty("--pr");r.style.removeProperty("--pt")}}
+const avatar=p=>String(p.img||"").startsWith("data:image/")?`<img src="${p.img}" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover">`:`<span style="display:inline-flex;width:56px;height:56px;border-radius:50%;background:var(--bd);align-items:center;justify-content:center;font-size:26px">${p.icon||esc((me.nick||"?")[0])}</span>`;
+const DEF=["bal","qa","req","chart","tx","goal","note"],HL={bal:"残高・借金",qa:"ショートカット",req:"届いている請求",chart:"残高の推移",tx:"最近の取引",goal:"貯金目標",note:"未読通知"};
+const order=()=>{const o=(PF().order||[]).filter(k=>DEF.includes(k));return o.concat(DEF.filter(k=>!o.includes(k)))};
+const mv=(i,d)=>run(async()=>{const o=order(),j=i+d;if(j<0||j>=o.length)return;[o[i],o[j]]=[o[j],o[i]];await savePf({order:o});go("set")});
+const tg=k=>run(async()=>{const h=PF().hide||[];await savePf({hide:h.includes(k)?h.filter(x=>x!=k):h.concat(k)});go("set")});
+const ntg=k=>run(async()=>{const n={...(PF().nt||{})};n[k]=n[k]===0?1:0;await savePf({nt:n});go("set")});
+const gBar=g=>{const r=Math.min(100,Math.round(g.saved/g.target*100));return`<div style="background:var(--bd);height:10px;border-radius:5px;margin:6px 0"><div style="width:${r}%;height:100%;background:var(--pr);border-radius:5px"></div></div><span class=mu>${yen(g.saved)} / ${yen(g.target)}(${r}%)${r>=100?" 達成!":""}</span>`};
+const gRow=g=>`<div style="padding:14px 0;border-bottom:1px solid var(--bd)"><b>${esc(g.name)}</b>${gBar(g)}<div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><input id="ga${g.id}" type="number" placeholder="金額" style="width:100px;margin:0"><button class="btn" onclick="gAdd('${g.id}',1)">貯める</button><button class="btn s" onclick="gAdd('${g.id}',-1)">戻す</button><button class="btn s" onclick="gEdit('${g.id}')">編集</button><button class="btn r" onclick="gDel('${g.id}')">削除</button></div></div>`;
+Object.assign(V,{async home(ns){const dbt=(await all("loan")).filter(l=>l.borrower==me.id&&l.st=="on").reduce((s,l)=>s+l.amt-l.paid,0),rq=(await all("req")).filter(r=>r.to==me.id&&r.st=="wait"),t=await mytx(),G=(await all("goal")).filter(g=>g.uid==me.id),p=PF();
+ const C={bal:`<div class="card"><div style="display:flex;gap:16px;align-items:center">${avatar(p)}<div><div class="mu">${esc(p.disp||me.nick)}さんの残高</div><div class="bal">${yen(me.bal)}</div></div></div><div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bd)"><span class="mu">借金の残り</span> <b style="font-size:20px;margin-left:8px">${yen(dbt)}</b></div></div>`,
+ qa:`<div class="qa"><button class="btn" onclick="go('send')">送金・請求</button><button class="btn s" onclick="go('loan')">借金・返済</button><button class="btn s" onclick="go('dm')">DM</button></div>`,
+ req:`<div class="card"><b>届いている請求</b>${rq.length?rq.map(rqRow).join(""):'<p class="mu">ありません</p>'}</div>`,chart:spark(t),tx:`<div class="card"><b>最近の取引</b>${txRows(t.slice(0,5))}</div>`,
+ goal:`<div class="card"><b>貯金目標</b>${G.map(g=>`<div style="padding:8px 0"><b>${esc(g.name)}</b>${gBar(g)}</div>`).join("")||'<p class="mu">設定の「貯金目標」から追加できます</p>'}</div>`,
+ note:`<div class="card"><b>未読通知</b>${ns.filter(n=>!n.read).slice(0,3).map(n=>`<div class=row>${esc(n.text)}</div>`).join("")||'<p class="mu">ありません</p>'}</div>`};
+ return order().filter(k=>!(p.hide||[]).includes(k)).map(k=>C[k]).join("")||'<p class="mu">表示するカードがありません。設定で表示してください。</p>'}});
+let setT="theme";
+const S={
+async theme(){const p=PF(),ch=(k,v,l,c)=>`<button class="btn ${c==v?"":"s"}" onclick="savePf({${k}:'${v}'}).then(()=>go('set'))">${l}</button>`;
+ return`<div class="card"><b>ダークモード</b><div class="qa">${[["auto","自動"],["light","白基調"],["dark","黒基調"]].map(a=>ch("mode",a[0],a[1],p.mode||"auto")).join("")}</div></div><div class="card"><b>テーマカラー</b><div class="qa">${[["mono","白黒"],["blue","青"],["green","緑"],["purple","紫"],["red","赤"]].map(a=>ch("color",a[0],a[1],p.color||"mono")).join("")}</div></div>`},
+async home(){const h=PF().hide||[];return`<div class="card"><b>マイページの表示</b><p class=mu>カードの表示・非表示と、順番を変えられます。</p>${order().map((k,i)=>`<div class=row><span>${HL[k]}</span><span><button class="btn s" onclick="mv(${i},-1)">↑</button> <button class="btn s" onclick="mv(${i},1)">↓</button> <button class="btn ${h.includes(k)?"s":""}" onclick="tg('${k}')">${h.includes(k)?"非表示":"表示中"}</button></span></div>`).join("")}</div>`},
+async nt(){const n=PF().nt||{},K=[["req","請求の通知"],["pay","入金・支払いの通知"],["loan","借金・返済の通知"],["dm","DMの通知"],["event","イベントの通知"],["news","お知らせ・目標の通知"],["reply","問い合わせへの返信"]];
+ return`<div class="card"><b>通知の種類</b>${K.map(k=>`<div class=row><span>${k[1]}</span><button class="btn ${n[k[0]]===0?"s":""}" onclick="ntg('${k[0]}')">${n[k[0]]===0?"オフ":"オン"}</button></div>`).join("")}</div><div class="card"><b>セキュリティの通知(常にオン)</b><p class=mu>パスワードの変更など、重要な通知は、ここでは切り替えられません。</p></div>`},
+async prof(){const p=PF(),I=["🌙","⭐","🍀","🎧","⚽","🎨","📚","🚀"];
+ return`<div class="card"><b>プロフィール</b><div style="margin-bottom:14px">${avatar(p)}</div><label>表示名(マイページに表示されます)</label><input id="dp" maxlength="12" value="${esc(p.disp||"")}"><button class="btn" onclick="saveDisp()">保存</button><p class=mu>ログインID(ニックネーム): ${esc(me.nick)}。口座の識別に使うため、変更できません。</p></div><div class="card"><b>アイコン</b><div class="qa">${I.map(a=>`<button class="btn s" style="font-size:22px" onclick="savePf({icon:'${a}',img:''}).then(()=>go('set'))">${a}</button>`).join("")}</div><label>画像から選ぶ</label><input type="file" accept="image/*" onchange="upImg(this)"></div>`},
+async goal(){const G=(await all("goal")).filter(g=>g.uid==me.id).sort((a,b)=>a.t-b.t);
+ return`<div class="card"><b>目標を追加</b><input id="gn" maxlength="20" placeholder="目標名(例: ゲームを買う)"><input id="gt" type="number" placeholder="目標金額(円)"><button class="btn" onclick="addGoal()">追加</button><p class=mu>貯金目標は、実際の残高とは別に管理されます。</p></div><div class="card"><b>目標の一覧</b>${G.map(gRow).join("")||'<p class=mu>まだありません</p>'}</div>`},
+async sec(){const H=(await all("logins")).filter(l=>l.uid==me.id).sort((a,b)=>b.t-a.t).slice(0,10);
+ return`<div class="card"><b>パスワード変更</b><input id="op" type="password" placeholder="今のパスワード"><input id="np" type="password" placeholder="新しいパスワード(6文字以上)"><button class="btn" onclick="chpw()">変更</button></div><div class="card"><b>ログイン履歴(直近10件)</b>${H.map(l=>`<div class=row><span>${fmt(l.t)}</span><span class=mu>${esc(String(l.ua||"").slice(0,40))}</span></div>`).join("")||'<p class=mu>履歴はありません</p>'}<p class=mu>心当たりのないログインがあれば、パスワードを変更し、お問い合わせで知らせてください。</p></div><div class="card"><b>アカウント保護</b><p class=mu>管理者ページの権限は、この設定からは変更できません。入るには、毎回コードの確認が必要です。</p><button class="btn r" onclick="logout()">ログアウト</button></div>`},
+async tx(){const o=PF().cf===0;return`<div class="card"><b>送金前の確認</b><p class=mu>送金の前に、相手・金額・理由を確認する画面を出します。</p><button class="btn ${o?"s":""}" onclick="savePf({cf:${o?1:0}}).then(()=>go('set'))">${o?"オフ":"オン"}</button></div><div class="card"><b>通帳データの出力(CSV)</b><p class=mu>自分の取引だけが出力されます。</p><button class="btn" onclick="csv()">CSVをダウンロード</button></div>`},
+async help(){const Q=[["請求って何?","相手にお金を払ってほしいと頼むことです。相手が同意し、サインすると、お金が移ります。拒否されたときは、残高は変わりません。"],["借金を返済するには?","「借金・返済」を開き、借金の欄に返済額を入れて「返済」を押します。サインが必要です。完済すると「完済」と表示されます。"],["請求すると借金になるの?","はい。「送金・請求」で請求を送り、相手が同意してサインすると、お金があなたに届き、返済が必要な借金になります。返済は「借金・返済」から行います。"],["サインはなぜ必要?","支払いや請求の内容に、本人が同意したことを残すためです。通帳でも確認できます。"],["DMで気をつけることは?","本名や学校名、住所などは送らないでください。困ったときは、お問い合わせの「通報」から知らせられます。"]];
+ return`<div class="card"><b>使い方ガイド</b>${Q.map(q=>`<details style="padding:12px 0;border-bottom:1px solid var(--bd)"><summary style="cursor:pointer;font-weight:600">${q[0]}</summary><p class=mu style="font-size:14px;margin:8px 0 0">${q[1]}</p></details>`).join("")}</div><div class="card"><b>退会の申請</b><p class=mu>未返済の借金がある場合は、完済してから申請してください。申請を管理者が確認してから、処理されます。取引の記録は残ります。</p><button class="btn r" onclick="wd()">退会を申請する</button></div>`}};
+Object.assign(V,{async set(){const T=[["theme","テーマ"],["home","マイページ"],["nt","通知"],["prof","プロフィール"],["goal","貯金目標"],["sec","セキュリティ"],["tx","取引・通帳"],["help","ヘルプ・退会"]];
+ return`<div class="qa">${T.map(t=>`<button class="btn ${setT==t[0]?"":"s"}" onclick="setT='${t[0]}';go('set')">${t[1]}</button>`).join("")}</div>`+await S[setT]()}});
+const saveDisp=()=>run(async()=>{await savePf({disp:$("#dp").value.trim().slice(0,12)});say("保存しました");go("set")});
+const upImg=el=>{const f=el.files[0];if(!f)return;const r=new FileReader;r.onload=()=>{const i=new Image;i.onload=()=>{const c=document.createElement("canvas");c.width=c.height=96;const m=Math.min(i.width,i.height);c.getContext("2d").drawImage(i,(i.width-m)/2,(i.height-m)/2,m,m,0,0,96,96);run(async()=>{await savePf({img:c.toDataURL("image/jpeg",.8),icon:""});go("set")})};i.onerror=()=>say("画像を読み込めません",0);i.src=r.result};r.readAsDataURL(f)};
+const addGoal=()=>run(async()=>{const n=$("#gn").value.trim(),t=+$("#gt").value;if(!n||!Number.isInteger(t)||t<1)throw"目標名と目標金額を入力してください";await db.collection("goal").add({uid:me.id,name:n,target:t,saved:0,done:0,t:Date.now()});go("set")});
+const gAdd=(id,sg)=>run(async()=>{const ref=db.collection("goal").doc(id),g=(await ref.get()).data(),a=+$("#ga"+id).value;if(!g||g.uid!=me.id)throw"目標が見つかりません";if(!Number.isInteger(a)||a<1)throw"金額を入力してください";const v=Math.max(0,g.saved+sg*a);await ref.update({saved:v});if(v>=g.target&&!g.done){await ref.update({done:1});await note(me.id,`貯金目標「${g.name}」を達成しました`,"home")}go("set")});
+const gEdit=id=>run(async()=>{const ref=db.collection("goal").doc(id),g=(await ref.get()).data();if(!g||g.uid!=me.id)throw"目標が見つかりません";const n=prompt("目標名",g.name);if(n===null)return;const t=+prompt("目標金額(円)",g.target);if(!n.trim()||!Number.isInteger(t)||t<1)throw"入力が正しくありません";await ref.update({name:n.trim().slice(0,20),target:t,done:g.saved>=t?g.done:0});go("set")});
+const gDel=id=>run(async()=>{if(!confirm("この目標を削除しますか?"))return;await db.collection("goal").doc(id).delete();go("set")});
+const csv=()=>run(async()=>{const q=v=>{v=String(v);if(/^[=+\-@]/.test(v))v="'"+v;return'"'+v.replace(/"/g,'""')+'"'},t=(await mytx()).reverse(),rows=[["日時","種類","相手","金額(円)","理由","受付番号"]].concat(t.map(x=>{const o=x.from==me.id;return[new Date(x.t).toLocaleString("ja-JP"),o?"出金":"入金",o?x.toN:x.fromN,x.amt,x.why||"",x.id]})),data="\ufeff"+rows.map(r=>r.map(q).join(",")).join("\n"),fn="life-cat-tsucho.csv";
+ let d=null;try{d=typeof claude!="undefined"?await claude.use("downloads"):null}catch(e){}
+ if(d)await d.save({filename:fn,data});else{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([data],{type:"text/csv"}));a.download=fn;a.click()}say("出力の操作をしました")});
+const wd=()=>run(async()=>{if((await all("loan")).some(l=>l.borrower==me.id&&l.st=="on"))throw"未返済の借金があります。完済してから申請してください";if((await all("ask")).some(a=>a.uid==me.id&&a.kind=="退会申請"))throw"すでに申請しています";if(!confirm(`退会を申請しますか?\n残高 ${yen(me.bal)} は、退会後に使えなくなります。`))return;await db.collection("ask").add({uid:me.id,nick:me.nick,text:`退会を申請します(残高 ${yen(me.bal)})`,kind:"退会申請",target:"",rep:"",t:Date.now()});say("申請しました。管理者の確認をお待ちください")});
 init();
 </script></body></html>
